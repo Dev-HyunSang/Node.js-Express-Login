@@ -1,0 +1,29 @@
+{
+  "name": "Node.js-Express-Login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-HyunSang/Node.js-Express-Login.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dev-HyunSang/Node.js-Express-Login/issues"
+  },
+  "homepage": "https://github.com/Dev-HyunSang/Node.js-Express-Login#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
