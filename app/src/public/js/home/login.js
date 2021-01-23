@@ -1,3 +1,5 @@
+"use strict";
+
 const id = document.querySelector('#id'),
     psword = document.querySelector('#psword'),
     loginbtn = document.querySelector("button");
@@ -9,6 +11,7 @@ function login() {
         id: id.value,
         password: psword.value,
     };
+
     console.log(req);
     console.log(JSON.stringify(req));
     fetch("/login", {
@@ -26,6 +29,7 @@ function login() {
             alert(res.message);
         }
     }).catch((err) => {
+        console.log(err);
         console.error(new Error("로그인 중 에러 발생"));
     });
 } 
