@@ -1,3 +1,5 @@
+"use strict";
+
 const User = require("../../models/User");
 
 const output = {
@@ -27,5 +29,5 @@ const process = {
 
 module.exports = {
   output,
-  process
-}
+  process,
+};

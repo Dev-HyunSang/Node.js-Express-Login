@@ -1,3 +1,5 @@
+"use strict";
+
 const { response } = require("express");
 const UserStorage = require("./UserStorage");
 
@@ -6,11 +8,9 @@ class User {
     this.body = body;
   }
 
-  async login() { 
+  async login() {
     const client = this.body;
-    // await => 동기 처리 불가능
     const { id, psword } = await UserStorage.getUserInfo(client.id);
-    console.log(id + psword);
 
     if (id) {
       if (id === client.id && psword === client.psword) {
