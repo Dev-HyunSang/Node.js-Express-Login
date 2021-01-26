@@ -1,25 +1,43 @@
-class UserStorage{
-    // #users => USER INFO & ID, Password, Name
-    static #users = {
-        id: ['root'],
-        password: ['root'],
-        name: ['HyunSang Park']
-    };
+const db = require('../config/db');
 
-    static getUsers() {
-        return this.#users;
-    }
+class UserStorage {
+  static #getUserInfo(data, id) {
+    const users = JSON.parse(data);
+    const idx = users.id.indexOf(id);
+    const usersKeys = Object.keys(users); // => [id, psword, name]
+    const userInfo = usersKeys.reduce((newUser, info) => {
+      newUser[info] = users[info][idx];
+      return newUser;
+    }, {});
 
-    static getUserInfo(id) {
-        const users = this.#users;
-        const idx = users.id.indexOf(id);
-        const usersKeys = Object.keys(users); // => [id, password, name]
-        const userInfo = usersKeys.reduce((newUser, info) => {
-            newUser[info] = users[info][idx];
-            return newUser;
-        }, {})
-        return userInfo;
-    }
-};
+    return userInfo;
+  }
+
+  static #getUsers(data, isAll, fields) {
+    const users = JSON.parse(data);
+    if (isAll) return users;
+
+    const newUsers = fields.reduce((newUsers, field) => {
+      if (users.hasOwnProperty(field)) {
+        newUsers[field] = users[field];
+      }
+      return newUsers;
+    }, {});
+    return newUsers;
+  }
+
+  static getUsers(isAll, ...fields) {
+
+  }
+
+  static getUserInfo(id) {
+    db.query("SELECT * FROM users", (err, data) => {
+      console.log(data);
+    })
+  }
+
+  static async save(userInfo) {
+  }
+}
 
 module.exports = UserStorage;
